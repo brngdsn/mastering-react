@@ -5,7 +5,6 @@
   "homepage": "https://brngdsn.github.io/mastering-react-task-manager-app",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
@@ -16,7 +15,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build && npm run explore",
+    "predeploy": "npm run test -- --watchAll=false && npm run build && npm run explore",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -43,6 +42,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.0.1",
     "gh-pages": "^6.1.1"
   }
 }
