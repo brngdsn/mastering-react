@@ -350,6 +350,22 @@ npm run deploy
 - Go to your repository settings.
 - Enable GitHub Pages and set the source to `gh-pages` branch.
 
+5. **Patch App Routing for GitHub Pages:**
+
+   - Replace `BrowserRouter` with `HashRouter` in the routing setup.
+
+    ```javascript
+     // src/index.js
+     import { HashRouter as Router } from 'react-router-dom';
+    ```
+
+   - In the `package.json` set the `homepage` field.
+
+    ```json
+     // src/App.js
+     "homepage": "https://<your-username>.github.io/<your-repo-name>",
+    ```
+
 ---
 
 ### **4. Next Steps and Further Learning**
