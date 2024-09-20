@@ -53,7 +53,16 @@
   margin-right: 10px;
 }
 
+.mini {
+  border:1px solid #eee;
+  height: 256px;
+}
+
 .form-control-check {
   display: flex;
   align-items: center;
+}
+
+footer {
+  font-size: 0.75em;
 }

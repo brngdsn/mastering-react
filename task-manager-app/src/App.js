@@ -5,6 +5,7 @@ import Tasks from './components/Tasks';
 import AddTaskForm from './components/AddTaskForm';
 import { Route, Routes } from 'react-router-dom';
 import About from './components/About';
+import Footer from './components/Footer';
 
 function App() {
   const title = 'My Task Manager';
@@ -29,6 +30,7 @@ function App() {
         />
         <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
