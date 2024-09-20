@@ -3,6 +3,8 @@ import './App.css';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 import AddTaskForm from './components/AddTaskForm';
+import { Route, Routes } from 'react-router-dom';
+import About from './components/About';
 
 function App() {
   const title = 'My Task Manager';
@@ -15,8 +17,18 @@ function App() {
         onAdd={() => setShowAddTask(!showAddTask)}
         showAdd={showAddTask}
       />
-      {showAddTask && <AddTaskForm />}
-      <Tasks />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              {showAddTask && <AddTaskForm />}
+              <Tasks />
+            </>
+          }
+        />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </div>
   );
 }
