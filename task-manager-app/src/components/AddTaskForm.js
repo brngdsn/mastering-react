@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import TaskContext from '../context/TaskContext';
 
 const AddTaskForm = ({ onAdd }) => {
+  const { addTask } = useContext(TaskContext);
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
   const [reminder, setReminder] = useState(false);
@@ -13,7 +15,7 @@ const AddTaskForm = ({ onAdd }) => {
       return;
     }
 
-    onAdd({ text, day, reminder });
+    addTask({ text, day, reminder });
 
     setText('');
     setDay('');
