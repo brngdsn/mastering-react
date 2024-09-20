@@ -1,14 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import TaskContext from '../context/TaskContext';
 
 const Task = ({ task }) => {
   const { deleteTask, toggleReminder } = useContext(TaskContext);
 
+  const onToggle = useCallback((id) => {
+    return toggleReminder(id);
+  }, [toggleReminder]);
+
   return (
     <div
       className={`task ${task.reminder ? 'reminder' : ''}`}
-      onDoubleClick={() => toggleReminder(task.id)}
+      onDoubleClick={() => onToggle(task.id)}
     >
       <h3>
         {task.text}{' '}

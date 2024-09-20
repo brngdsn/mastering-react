@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Tasks from './components/Tasks';
-import AddTaskForm from './components/AddTaskForm';
 import { Route, Routes } from 'react-router-dom';
-import About from './components/About';
-import Footer from './components/Footer';
+
+const About = lazy(() => import('./components/About'));
+const Footer = lazy(() => import('./components/Footer'));
+const Header = lazy(() => import('./components/Header'));
+const Tasks = lazy(() => import('./components/Tasks'));
+const AddTaskForm = lazy(() => import('./components/AddTaskForm'));
 
 function App() {
   const title = 'My Task Manager';
@@ -13,24 +14,26 @@ function App() {
   
   return (
     <div className="App">
-      <Header
-        title={title}
-        onAdd={() => setShowAddTask(!showAddTask)}
-        showAdd={showAddTask}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              {showAddTask && <AddTaskForm />}
-              <Tasks />
-            </>
-          }
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header
+          title={title}
+          onAdd={() => setShowAddTask(!showAddTask)}
+          showAdd={showAddTask}
         />
-        <Route path="/about" element={<About />} />
-      </Routes>
-      <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {showAddTask && <AddTaskForm />}
+                <Tasks />
+              </>
+            }
+          />
+          <Route path="/about" element={<About />} />
+        </Routes>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

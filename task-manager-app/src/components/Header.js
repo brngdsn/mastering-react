@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from './Button';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -23,4 +24,4 @@ const Header = ({ title = 'Task Manager', onAdd, showAdd }) => {
   );
 };
 
-export default Header;
+export default React.memo(Header);
